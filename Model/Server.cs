@@ -38,12 +38,14 @@ namespace AlifTask.Model
 		}
 
 		// so I made another method for paying process
-		public void PayPayment(string paymentData, string userData)
+		public void PayPayment(string paymentData, Customer customerData)
 		{
-			payPurchaseStubMethod.Pay(paymentData, userData);
+            Console.WriteLine();
 
-			var message = $"Some info about purchase {paymentData}";
-			var userPhoneData = userData; // imagine we get user phone from user data class
+            payPurchaseStubMethod.Pay(customerData.Name, paymentData);
+
+			var message = $"Some info about purchase\n{paymentData}";
+			var userPhoneData = customerData.PhoneNumber;
 			smsNotificationStubMethod.Send(message, userPhoneData);
 		}
 	}
